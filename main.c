@@ -129,6 +129,11 @@ execute(uint32_t cycles, regs_t *regs, mem_t *mem)
 		uint8_t data = fetch(regs, mem);
 		mem->memory[regs->H << 8 | regs->L] = data;
 	} break;
+	case 0x3A: { // LDA
+		uint8_t lower_order_address = fetch(regs, mem);
+		uint8_t higher_order_address = fetch(regs, mem);
+		regs->A = mem->memory[higher_order_address << 8 | lower_order_address];
+	} break;
 	default:
 		break;
 	}
