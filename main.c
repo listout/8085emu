@@ -78,6 +78,49 @@ fetch(regs_t *regs, mem_t *mem)
 {
 	return mem->memory[regs->PC++];
 }
+
+void
+execute(uint32_t cycles, regs_t *regs, mem_t *mem)
+{
+	uint8_t opcode = fetch(regs, mem);
+	switch (opcode) {
+	case 0x3E: { // MVI A
+		uint8_t data = fetch(regs, mem);
+		regs->A = data;
+	} break;
+	case 0x06: { // MVI B
+		uint8_t data = fetch(regs, mem);
+		regs->B = data;
+	} break;
+	case 0x0E: { // MVI C
+		uint8_t data = fetch(regs, mem);
+		regs->C = data;
+	} break;
+	case 0x16: { // MVI D
+		uint8_t data = fetch(regs, mem);
+		regs->D = data;
+	} break;
+	case 0x1E: { // MVI E
+		uint8_t data = fetch(regs, mem);
+		regs->E = data;
+	} break;
+	case 0x26: { // MVI H
+		uint8_t data = fetch(regs, mem);
+		regs->H = data;
+	} break;
+	case 0x2E: { // MVI L
+		uint8_t data = fetch(regs, mem);
+		regs->L = data;
+	} break;
+	case 0x36: { // MVI M
+		uint8_t data = fetch(regs, mem);
+		printf("%2X\n", data);
+		mem->memory[regs->H << 8 | regs->L] = data;
+		printf("%2X\n", mem->memory[0xC500]);
+	} break;
+	default:
+		break;
+	}
 }
 
 int
