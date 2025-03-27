@@ -36,6 +36,14 @@ reset_cpu(regs_t regs, mem_t mem)
 	memset(&mem, 0, sizeof(mem));
 	regs.PC = 0x0000;
 	regs.SP = 0xFFFF;
+/*
+ * Fetch instruction from memory
+ */
+uint8_t
+fetch(regs_t *regs, mem_t mem)
+{
+	return mem.memory[regs->PC++];
+}
 }
 
 int
