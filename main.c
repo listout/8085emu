@@ -2,6 +2,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#define MAX_MEM 65536
+
+typedef struct Memory {
+	uint8_t memory[MAX_MEM];
+} mem_t;
+
 typedef struct Registers {
 	uint8_t A; // Accumulator
 	uint8_t B;
