@@ -35,7 +35,25 @@ reset_cpu(regs_t regs, mem_t mem)
 	memset(&regs, 0, sizeof(regs));
 	memset(&mem, 0, sizeof(mem));
 	regs.PC = 0x0000;
-	regs.SP = 0xFFFF;
+void
+reset_cpu(regs_t *regs, mem_t *mem)
+{
+	regs->A = 0;
+	regs->B = 0;
+	regs->C = 0;
+	regs->D = 0;
+	regs->E = 0;
+	regs->H = 0;
+	regs->L = 0;
+	regs->S = 0;
+	regs->Z = 0;
+	regs->AC = 0;
+	regs->P = 0;
+	regs->CY = 1;
+	regs->SP = 0xFFFF;
+	regs->PC = 0x0000;
+}
+
 /*
  * Fetch instruction from memory
  */
