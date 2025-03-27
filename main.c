@@ -78,7 +78,7 @@ reset_cpu(regs_t *regs, mem_t *mem)
 	regs->Z = 0;
 	regs->AC = 0;
 	regs->P = 0;
-	regs->CY = 1;
+	regs->CY = 0;
 	regs->SP = 0xFFFF;
 	regs->PC = 0x0000;
 }
