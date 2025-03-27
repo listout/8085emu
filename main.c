@@ -58,9 +58,9 @@ reset_cpu(regs_t *regs, mem_t *mem)
  * Fetch instruction from memory
  */
 uint8_t
-fetch(regs_t *regs, mem_t mem)
+fetch(regs_t *regs, mem_t *mem)
 {
-	return mem.memory[regs->PC++];
+	return mem->memory[regs->PC++];
 }
 }
 
