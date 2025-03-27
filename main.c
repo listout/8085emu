@@ -29,12 +29,25 @@ typedef struct Registers {
 	uint8_t CY : 1; // carry (also called CS)
 } regs_t;
 
+/*
+ * Dump containts of the registers
+ */
 void
-reset_cpu(regs_t regs, mem_t mem)
+dump_registers(regs_t reg)
 {
-	memset(&regs, 0, sizeof(regs));
-	memset(&mem, 0, sizeof(mem));
-	regs.PC = 0x0000;
+	printf("----------------------------------------\n");
+	printf("-------------- Registers ---------------\n");
+	printf("A: 0x%02X\tSP: 0x%02X\n", reg.A, reg.SP);
+	printf("B: 0x%02X\tPC: 0x%02X\n", reg.B, reg.PC);
+	printf("C: 0x%02X\tD: 0x%02X\n", reg.C, reg.D);
+	printf("E: 0x%02X\tH: 0x%02X\n", reg.E, reg.H);
+	printf("L: %02X\n", reg.L);
+	printf("S: 0x%02X\tZ: 0x%02X\n", reg.S, reg.Z);
+	printf("P: 0x%02X\tAC: 0x%02X\n", reg.P, reg.AC);
+	printf("CY: 0x%02X\n", reg.CY);
+	printf("----------------------------------------\n");
+}
+
 /*
  * Dump containts of the memory in 32 x 2048 grid
  */
