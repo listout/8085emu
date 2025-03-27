@@ -35,6 +35,22 @@ reset_cpu(regs_t regs, mem_t mem)
 	memset(&regs, 0, sizeof(regs));
 	memset(&mem, 0, sizeof(mem));
 	regs.PC = 0x0000;
+/*
+ * Dump containts of the memory in 32 x 2048 grid
+ */
+void
+dump_memory(mem_t mem)
+{
+	int count = 0;
+	for (int i = 00; i < 2048; i++) {
+		printf("%4d ", count);
+		for (int j = 00; j < 32; j++) {
+			printf("%02X ", mem.memory[count++]);
+		}
+		printf("\n");
+	}
+}
+
 void
 reset_cpu(regs_t *regs, mem_t *mem)
 {
