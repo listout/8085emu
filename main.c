@@ -114,9 +114,7 @@ execute(uint32_t cycles, regs_t *regs, mem_t *mem)
 	} break;
 	case 0x36: { // MVI M
 		uint8_t data = fetch(regs, mem);
-		printf("%2X\n", data);
 		mem->memory[regs->H << 8 | regs->L] = data;
-		printf("%2X\n", mem->memory[0xC500]);
 	} break;
 	default:
 		break;
