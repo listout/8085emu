@@ -28,6 +28,16 @@ typedef struct Registers {
 	uint8_t P : 1;  // parity flag
 	uint8_t CY : 1; // carry (also called CS)
 } regs_t;
+
+void
+reset_cpu(regs_t regs, mem_t mem)
+{
+	memset(&regs, 0, sizeof(regs));
+	memset(&mem, 0, sizeof(mem));
+	regs.PC = 0x0000;
+	regs.SP = 0xFFFF;
+}
+
 int
 main(void)
 {
