@@ -92,8 +92,13 @@ fetch(regs_t *regs, mem_t *mem)
 	return mem->memory[regs->PC++];
 }
 
+/*
+ * Parse and execute op-code from memory.
+ *
+ * @TODO: implement concept of cycles
+ */
 void
-execute(uint32_t cycles, regs_t *regs, mem_t *mem)
+execute(regs_t *regs, mem_t *mem)
 {
 	uint8_t opcode = fetch(regs, mem);
 	switch (opcode) {
