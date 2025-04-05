@@ -144,6 +144,38 @@ execute(regs_t *regs, mem_t *mem)
 	}
 }
 
+/*
+ * Test function to check various op-codes
+ */
+void
+test_run()
+{
+	regs_t *regs = malloc(sizeof(regs_t));
+	mem_t *mem = malloc(sizeof(mem_t));
+	reset_cpu(regs, mem);
+	mem->memory[0x0000] = 0x3E;
+	mem->memory[0x0001] = 0x05;
+	execute(regs, mem);
+	mem->memory[0x0002] = 0x26;
+	mem->memory[0x0003] = 0x07;
+	execute(regs, mem);
+	mem->memory[0x0004] = 0x2E;
+	mem->memory[0x0005] = 0xD0;
+	execute(regs, mem);
+	mem->memory[0x0006] = 0x36;
+	mem->memory[0x0007] = 0x25;
+	dump_registers(*regs);
+	execute(regs, mem);
+	mem->memory[0x0008] = 0x3A;
+	mem->memory[0x0009] = 0xD0;
+	mem->memory[0x000a] = 0x07;
+	execute(regs, mem);
+	dump_registers(*regs);
+	/*dump_memory(*mem);*/
+	free(regs);
+	free(mem);
+}
+
 int
 main(void)
 {
