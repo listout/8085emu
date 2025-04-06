@@ -139,6 +139,11 @@ execute(regs_t *regs, mem_t *mem)
 		uint8_t higher_order_address = fetch(regs, mem);
 		regs->A = mem->memory[higher_order_address << 8 | lower_order_address];
 	} break;
+	case 0x31: { // LXI SP
+		uint8_t lower_order_address = fetch(regs, mem);
+		uint8_t higher_order_address = fetch(regs, mem);
+		regs->SP = higher_order_address << 8 | lower_order_address;
+	} break;
 	default:
 		break;
 	}
