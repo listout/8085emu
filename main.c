@@ -37,7 +37,7 @@ dump_registers(regs_t reg)
 {
 	printf("----------------------------------------\n");
 	printf("-------------- Registers ---------------\n");
-	printf("A: 0x%02X\tSP: 0x%02X\n", reg.A, reg.SP);
+	printf("A: 0x%02X\tSP: 0x%04X\n", reg.A, reg.SP);
 	printf("B: 0x%02X\tPC: 0x%02X\n", reg.B, reg.PC);
 	printf("C: 0x%02X\tD: 0x%02X\n", reg.C, reg.D);
 	printf("E: 0x%02X\tH: 0x%02X\n", reg.E, reg.H);
