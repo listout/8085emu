@@ -150,6 +150,11 @@ execute(regs_t *regs, mem_t *mem)
 		regs->C = data_c;
 		regs->B = data_b;
 	} break;
+	case 0xC5: { // PUSH B
+		mem->memory[regs->SP--] = regs->B;
+		mem->memory[regs->SP--] = regs->C;
+
+	} break;
 	default:
 		break;
 	}
