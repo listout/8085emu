@@ -186,8 +186,20 @@ test_run()
 	mem->memory[0x0009] = 0xD0;
 	mem->memory[0x000a] = 0x07;
 	execute(regs, mem);
+	mem->memory[0x000b] = 0x01;
+	mem->memory[0x000c] = 0xBB;
+	mem->memory[0x000d] = 0xAA;
 	dump_registers(*regs);
-	/*dump_memory(*mem);*/
+	execute(regs, mem);
+	mem->memory[0x000e] = 0x31;
+	mem->memory[0x000f] = 0x00;
+	mem->memory[0x0010] = 0x40;
+	execute(regs, mem);
+	dump_registers(*regs);
+	mem->memory[0x0011] = 0xC5;
+	execute(regs, mem);
+	dump_registers(*regs);
+	dump_memory(*mem);
 	free(regs);
 	free(mem);
 }
