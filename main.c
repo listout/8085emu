@@ -113,6 +113,12 @@ execute(regs_t *regs, mem_t *mem)
 	case 0x02: { // STAX B
 		mem->memory[regs->B << 8 | regs->C] = regs->A;
 	} break;
+	case 0x03: { // INX B
+		uint16_t data = regs->B << 8 | regs->C;
+		data += 1;
+		regs->B = (data >> 8) & 0xFF;
+		regs->C = data & 0xFF;
+	} break;
 	case 0x3E: { // MVI A
 		uint8_t data = fetch(regs, mem);
 		regs->A = data;
