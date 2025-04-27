@@ -119,6 +119,12 @@ execute(regs_t *regs, mem_t *mem)
 		regs->B = (data >> 8) & 0xFF;
 		regs->C = data & 0xFF;
 	} break;
+	case 0x04: { // INR B
+		uint16_t data = regs->B << 8 | regs->C;
+		data += 1;
+		regs->B = (data >> 8) & 0xFF;
+		regs->C = data & 0xFF;
+	} break;
 	case 0x3E: { // MVI A
 		uint8_t data = fetch(regs, mem);
 		regs->A = data;
