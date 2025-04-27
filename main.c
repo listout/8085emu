@@ -102,6 +102,8 @@ execute(regs_t *regs, mem_t *mem)
 {
 	uint8_t opcode = fetch(regs, mem);
 	switch (opcode) {
+	case 0x00:
+		break;   // NOP
 	case 0x3E: { // MVI A
 		uint8_t data = fetch(regs, mem);
 		regs->A = data;
