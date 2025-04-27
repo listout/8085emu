@@ -110,6 +110,9 @@ execute(regs_t *regs, mem_t *mem)
 		regs->C = data_c;
 		regs->B = data_b;
 	} break;
+	case 0x02: { // STAX B
+		mem->memory[regs->B << 8 | regs->C] = regs->A;
+	} break;
 	case 0x3E: { // MVI A
 		uint8_t data = fetch(regs, mem);
 		regs->A = data;
