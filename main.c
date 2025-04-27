@@ -104,6 +104,12 @@ execute(regs_t *regs, mem_t *mem)
 	switch (opcode) {
 	case 0x00:
 		break;   // NOP
+	case 0x01: { // LXI B
+		uint8_t data_c = fetch(regs, mem);
+		uint8_t data_b = fetch(regs, mem);
+		regs->C = data_c;
+		regs->B = data_b;
+	} break;
 	case 0x3E: { // MVI A
 		uint8_t data = fetch(regs, mem);
 		regs->A = data;
@@ -145,12 +151,6 @@ execute(regs_t *regs, mem_t *mem)
 		uint8_t lower_order_address = fetch(regs, mem);
 		uint8_t higher_order_address = fetch(regs, mem);
 		regs->SP = higher_order_address << 8 | lower_order_address;
-	} break;
-	case 0x01: { // LXI B
-		uint8_t data_c = fetch(regs, mem);
-		uint8_t data_b = fetch(regs, mem);
-		regs->C = data_c;
-		regs->B = data_b;
 	} break;
 	case 0xC5: { // PUSH B
 		mem->memory[regs->SP--] = regs->B;
