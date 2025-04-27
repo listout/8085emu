@@ -10,7 +10,7 @@ typedef struct Memory {
 } mem_t;
 
 typedef struct Registers {
-	uint8_t A; // Accumulator
+	uint16_t A; // Accumulator
 	uint8_t B;
 	uint8_t C;
 	uint8_t D;
